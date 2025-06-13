@@ -86,19 +86,26 @@ usecaseDiagram
    - Main pages load in under two seconds on normal campus Wi-Fi.
    - Map markers refresh in less than one second after a user adds a new spot.
 
-3. **Security**
+3. **Scalability**
+   - The project can start on one low-cost VPS and be cloned to another if usage grows during college events.
+   - Laravel queues allow heavy tasks (image resize, email send) to run in the background, keeping the site responsive.
+
+4. **Security**
    - Laravel React Starter Kit gives login, password reset and CSRF protection out of the box.
    - All pages are served over HTTPS using a free SSL certificate such as Let’s Encrypt.
 
-4. **Maintainability**
+5. **Maintainability**
    - Code is stored on GitHub with clear branch names and commit messages.
    - Inline comments and a README explain how to set up, run and test the project.
 
-5. **Reliability**
+6. **Reliability**
    - A daily database export is saved to Google Drive so data can be restored if needed.
    - The app runs on a single VPS that restarts the service automatically if it crashes.
 
 ## 3.3 Feasibility Study
+
+A feasibility study is carried out to check whether the proposed StreetFeed project can succeed. It looks at the technology we will use, how the system will work in real life, and whether the costs fit our college budget.
+
 ### 3.3.1 Technical Feasibility
 The Laravel–React stack supports rapid development, while Docker and GitHub Actions enable reproducible builds. Third-party integrations (Stripe SDK, Ncell SMS, Google Maps JS API, and local wallet REST APIs) are well-documented, reducing implementation risk. Scalability is ensured through Kubernetes Horizontal Pod Autoscaler (HPA) on any CNCF-compliant cloud.
 
