@@ -10,14 +10,14 @@
 ## 1.0 Introduction & Project Context
 
 ### 1.1 Introduction
-StreetFeed is a web–based volunteer-management and donation platform dedicated to the welfare of street dogs (and other stray animals) across Nepal. The system enables citizens, animal-welfare organisations, and donors to collaboratively organise feeding drives, medical camps, and awareness campaigns with full transparency. Leveraging a modern **Laravel 12 REST API** backend and **React (Laravel Starter Kit)** frontend, StreetFeed provides location-aware event listings, secure online donations via **Stripe**, and an integrated e-commerce micro-store to create a self-sustaining ecosystem for continuous animal-care operations.
+StreetFeed is a web–based volunteer-management and donation platform dedicated to the welfare of street dogs (and other stray animals) across Nepal. The system enables citizens, animal-welfare organisations, and donors to collaboratively organise feeding drives, medical camps, and awareness campaigns with full transparency. Leveraging the **Laravel 12 + React Starter Kit (Inertia.js)** monolithic stack, StreetFeed provides location-aware event listings, secure online donations via **Stripe**, and an integrated e-commerce micro-store to create a self-sustaining ecosystem for continuous animal-care operations.
 
 ### 1.2 Problem Statement
 Kathmandu Valley alone is estimated to host over **100 000 free-roaming dogs** with limited access to regular food and medical assistance [3]. Existing animal-welfare NGOs face chronic shortages of volunteers, fragmented information sharing, and unstructured donation tracking. There is **no unified digital platform** that simultaneously (i) mobilises volunteers, (ii) visualises feeding locations in real-time, and (iii) assures donors of transparent fund utilisation. Consequently, community engagement remains scattered, leading to duplicated efforts and inefficiencies.
 
 ### 1.3 Objectives
 1. Develop a scalable web platform that lists volunteer events and feeding spots on an interactive map.
-2. Provide secure authentication & role-based authorisation using Laravel Breeze + Sanctum/JWT.
+2. Provide secure authentication & role-based authorisation using Laravel Breeze (session-based) with optional Sanctum tokens.
 3. Enable real-time donation processing through Stripe and publish public ledgers for transparency.
 4. Offer an online store for pet supplies, reinvesting profits into animal-care activities.
 5. Generate analytical dashboards for administrators to monitor volunteer activity, donations, and impact metrics.
@@ -50,7 +50,7 @@ From a technical standpoint, Laravel’s upcoming **v12** (scheduled February 20
 ## 3.0 System Requirements
 
 ### 3.1 Functional Requirements
-1. **User Registration & Authentication** – Email, social-login (Google), JWT session management.
+1. **User Registration & Authentication** – Email, social-login (Google), session management.
 2. **Volunteer Event Management** – CRUD operations for feeding/medical events, moderator approval workflow.
 3. **Geo-Mapping Module** – Display live markers for service locations; filter by date & category.
 4. **Donation Processing** – Stripe payment intent, receipt generation, public donation ledger.
@@ -59,31 +59,31 @@ From a technical standpoint, Laravel’s upcoming **v12** (scheduled February 20
 7. **Admin Analytics Dashboard** – KPIs on volunteers, donations, inventory, and heat-map overlays.
 8. **Content Management** – Blog posts, educational resources with markdown editor & moderation.
 9. **Role-Based Access Control** – Admin, Moderator, Volunteer, Guest permissions matrix.
-10. **API Documentation** – Auto-generated OpenAPI/Swagger docs for future mobile-app consumption.
+10. **Developer Documentation** – Inline PHPDoc and Laravel route list generation for maintainers.
 
 ### 3.2 Non-Functional Requirements
 1. **Performance**
-   - ⚡ Average page load < 2 s on 4G.
+   - Server p95 response < 300 ms.
    - Backend API p95 response < 300 ms.
    - Map clustering to avoid >1 000 DOM nodes.
 2. **Security**
-   - 🔒 HTTPS/TLS 1.3 enforced.
+   - HTTPS/TLS 1.3 enforced.
    - OWASP Top-10 compliant coding; CSRF & XSS defences.
    - Role-based auth with token expiry & refresh.
 3. **Usability**
-   - 🖥️ Responsive design (mobile-first).
+   - Responsive design (mobile-first).
    - WCAG 2.1 AA colour-contrast & keyboard navigation.
 4. **Reliability & Availability**
-   - ⏱️ 99.5 % uptime target during pilot.
+   - 99.5 % uptime target during pilot.
    - Automated nightly backups of DB & media.
 5. **Maintainability & Scalability**
-   - 🧩 Modular MVC codebase with SOLID principles.
+   - Modular MVC codebase with SOLID principles.
    - Docker-based deployment; horizontal scaling via load balancer.
 6. **Compliance & Accessibility**
-   - 📜 GDPR-like privacy policy; Nepal IT Act alignment.
+   - GDPR-like privacy policy; Nepal IT Act alignment.
    - Alt-text for images; semantic HTML for screen readers.
 7. **Localization**
-   - 🌐 i18n support for English & Nepali strings via `react-i18next`.
+   - i18n support for English & Nepali strings via `react-i18next`.
 
 ### 3.3 Feasibility Study
 #### 3.3.1 Technical Feasibility
@@ -115,13 +115,13 @@ flowchart TD
 ```mermaid
 flowchart LR
     subgraph Client
-        U[User Browser (React)]
+        U[User Browser (Laravel + React via Inertia)]
     end
-    U -->|HTTPS| API((Laravel 12 REST API))
-    API --> DB[(MySQL DB)]
-    API --> STRIPE>Stripe API]
-    API --> MAPS>Google Maps JS API]
-    API --> EMAIL>SMTP / SendGrid]
+    U -->|HTTPS| LaravelApp[(Laravel 12 + Inertia)]
+    LaravelApp --> DB[(MySQL DB)]
+    LaravelApp --> STRIPE>Stripe API]
+    LaravelApp --> MAPS>Google Maps JS API]
+    LaravelApp --> EMAIL>SMTP / SendGrid]
     DB --> ADMIN[Admin Dashboard]
 ```
 
