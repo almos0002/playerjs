@@ -56,54 +56,47 @@ A review of recent scholarship and policy documents underscores both the urgency
 Collectively, the literature highlights three critical gaps: (1) lack of a real-time geospatial dashboard for field operations, (2) fragmented donation accountability, and (3) limited volunteer retention mechanisms. StreetFeed addresses all three by uniting geospatial data, transparent finance, and gamified volunteer engagement on a single open platform.
 
 ## 3.1 Functional Requirements
-* User registration/login with role-based access (Admin, Moderator, Volunteer, Donor).
-* Interactive map to view, filter, and add feeding/service locations with photo uploads.
-* Event module:
-  - Create, join, edit, or cancel events.
-  - Auto-reminders via email/SMS 24 h before start.
-  - Capacity caps and wait-list logic.
-* Donation system:
-  - Stripe, eSewa, and Khalti payment gateways.
-  - Real-time public ledger with CSV/JSON export.
-  - Receipts auto-emailed to donors.
-* Gamification engine:
-  - Points awarded per event participation or donation.
-  - Tiered badges and monthly leaderboard API.
-* E-commerce store:
-  - Product catalogue with inventory alerts.
-  - Discount coupons for top volunteers.
-* Admin dashboard:
-  - CRUD operations on users, events, products, and donation records.
-  - Geo-heatmaps for campaign planning.
-* Open Data API (REST + GraphQL) for third-party integrations.
-* Notification subsystem:
-  - Web-push, email, and optional Viber bot updates.
+
+The functional requirements define the core features and capabilities of StreetFeed. Users can sign up, see and add feeding spots on an online map, plan or join care events, and donate through safe, clear payments. Every donation shows in a public record, a small store sells pet items to raise extra funds, and volunteers earn points and badges for their help. Admins can manage users, events and shop items and view short reports. The platform also gives an open data API and sends email, push or Viber alerts so everyone stays informed.
+
+### Use Case Diagram
+```mermaid
+%%{init: {'theme':'base'}}%%
+usecaseDiagram
+  actor Volunteer
+  actor Donor
+  actor Admin
+  actor Guest
+  Volunteer --> (Join Event)
+  Volunteer --> (Update Profile)
+  Donor --> (Make Donation)
+  Admin --> (Approve Event)
+  Admin --> (Manage Users)
+  Admin --> (View Reports)
+  Guest --> (Browse Map)
+```
+*Figure 3 – Main user roles and actions in StreetFeed.*
 
 ## 3.2 Non-Functional Requirements
 1. **Usability**
-   - Responsive UI for mobile and desktop.
-   - Accessible design complying with WCAG 2.1 AA.
+   - Interface is clean with clear buttons and labels so new users can find features quickly.
+   - Layout adapts to laptop and common phone screen sizes tested with browser tools.
 
 2. **Performance**
-   - Map updates within <500 ms.
-   - API response time <300 ms for 95 % of requests.
+   - Main pages load in under two seconds on normal campus Wi-Fi.
+   - Map markers refresh in less than one second after a user adds a new spot.
 
-3. **Scalability**
-   - Horizontal scaling using container orchestration (Docker & Kubernetes).
-   - Cloud-agnostic deployment scripts.
+3. **Security**
+   - Laravel React Starter Kit gives login, password reset and CSRF protection out of the box.
+   - All pages are served over HTTPS using a free SSL certificate such as Let’s Encrypt.
 
-4. **Security**
-   - JWT-based authentication with refresh tokens.
-   - End-to-end encryption (TLS 1.3) for all transactions.
-   - Regular vulnerability scans & OWASP compliance.
+4. **Maintainability**
+   - Code is stored on GitHub with clear branch names and commit messages.
+   - Inline comments and a README explain how to set up, run and test the project.
 
-5. **Maintainability**
-   - Modular codebase with 80 % unit-test coverage.
-   - CI/CD pipeline with automated linting and testing.
-
-6. **Reliability & Availability**
-   - 99.5 % monthly uptime.
-   - Automated backups every 6 hours.
+5. **Reliability**
+   - A daily database export is saved to Google Drive so data can be restored if needed.
+   - The app runs on a single VPS that restarts the service automatically if it crashes.
 
 ## 3.3 Feasibility Study
 ### 3.3.1 Technical Feasibility
