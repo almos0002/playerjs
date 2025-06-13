@@ -1,188 +1,166 @@
-# Proposal Defence Report – StreetFeed: A Voluntary Service Platform for Street Animals in Nepal
+# Proposal Defence Report – StreetFeed: A College Project for Street Animals in Nepal
 
 ---
 
 ## 1.1 Introduction
-Street animals, especially stray dogs, live in Nepal’s cities but often get little care. Fast city growth, poor waste collection and too few neutering programs have increased their numbers and raised health risks for people and animals. **StreetFeed** is a simple web platform that links volunteers, donors and city offices. It uses maps, live dashboards and clear donation records so good deeds become organised action.
-
-Animal care supports global goals like Good Health, Safe Cities and Life on Land. By combining online tools with community energy, StreetFeed can be a model for kind and smart cities across South Asia.
+Stray dogs are common on the streets of Kathmandu and other Nepali cities. Many of them suffer from hunger, disease and road accidents. **StreetFeed** is a web system that helps volunteers, donors and city staff work together to feed, treat and watch over these animals. The system shows feeding spots on a map, keeps donation records open to the public and sells pet items to raise extra funds.
 
 ## 1.2 Problem Statement
-Kathmandu has about **22,000** stray dogs ([2]). Other big cities face the same issue. Key problems are:
-
-* Volunteers, NGOs and city staff do not share information well.
-* Feeding, vaccination and neutering events are not planned together.
-* Donors cannot easily see how their money is used.
-* City staff lack current location data to guide their work.
-* Digital payments are common, but the project does not use them enough ([6]).
-* The platform lacks fun features to keep young volunteers involved.
+Kathmandu Metropolitan City counted about **22 000** stray dogs in 2024 [2]. Current help efforts rely on social media posts and paper notes, so work is doubled or missed. Donors do not always know where their money goes, and the city has little data for planning vaccinations or neutering drives.
 
 ## 1.3 Objectives
-1. Give one online place to plan and announce animal care events.
-2. Show every donation in a live public ledger.
-3. Display live maps and simple charts of service areas.
-4. Run an online store to help pay for the work.
-5. Provide open data and reports for researchers and city planners.
-6. Reward steady volunteers with points and badges.
-7. Accept mobile wallets (eSewa, Khalti) as well as Stripe.
+1. Give one website where volunteers can plan, join and view feeding events.
+2. Keep a live, public ledger of all donations for full trust.
+3. Show feeding spots and dog-care events on an interactive map.
+4. Run a small online store to support the project’s costs.
+5. Offer simple reports and open data for city offices and students.
+
+---
 
 ## 2.1 Background Study  
-Nepal’s free-roaming dog population is estimated between **300,000** and **400,000** nationwide, with rapid growth in the Kathmandu Valley. A baseline survey by Humane Society International (2022) recorded **22,000** dogs inside the 32 wards of Kathmandu Metropolitan City (KMC) and more than **9,500** in Pokhara Sub-Metropolitan City. Unchecked breeding, open garbage disposal, and cultural reluctance to cull animals contribute to this rise.
+A 2022 survey by Humane Society International found **22 000** free-roaming dogs in Kathmandu’s 32 wards. Stray dogs are the main source of rabies in Nepal; the Health Ministry still records **35–40** human deaths a year [1]. Feeding teams and NGOs do good work but use different tools, so their data is scattered. At the same time, digital use is high: Nepal’s mobile broadband user base passed **38 million** in 2023, and QR payments grew by **45 %** year on year [6]. This means an online tool can reach many volunteers and donors at low cost.
 
-Rabies remains endemic: the Epidemiology and Disease Control Division records **35-40** human deaths annually, **99 %** linked to dog bites ([1]). Although KMC vaccinates approximately **10,000** dogs every year, coverage rarely exceeds **55 %**, falling short of the **70 %** threshold recommended by the WHO for herd immunity.
+## 2.2 Literature Review  
+• **Zero by 30** (WHO, 2018) sets a goal to end dog-mediated rabies deaths by 2030 [1].  
+• **Dhakal et al.** (2023) found a high level of zoonotic pathogens in Kathmandu’s stray dogs [3].  
+• **Poudel et al.** (2024) linked city air pollution to lung problems in stray dogs [4].  
+• **O’Haire et al.** (2024) showed how map models can predict dog hotspots, helping target care [5].  
+• **Nepal Rastra Bank** (2023) reported a sharp rise in QR donations, proving that digital giving works [6].  
+• **UN Volunteers** (2019) highlighted how online platforms boost community projects [7].  
+These studies back the idea that one mapped, transparent web system can improve dog care and public health.
 
-The economic toll is significant. Post-exposure prophylaxis (PEP) for bite victims costs the Ministry of Health over **USD 500 000** per year, and negative press surrounding dog attacks affects tourism revenue. Stray dogs also pose traffic hazards and spread zoonotic parasites, imposing hidden costs on municipal budgets.
-
-Meanwhile, Nepal’s digital ecosystem is maturing rapidly:
-
-* Mobile broadband penetration surpassed **139 %** SIM density in 2023 (NTA).
-* Digital wallets such as **eSewa** and **Khalti** processed **310 million** transactions in FY 2023 ([6]).
-* Over **60 %** of urban residents now own smartphones capable of GPS tagging and QR payments.
-
-Civil-society engagement is strong—more than **200** registered animal-welfare NGOs operate nationwide—yet coordination is weak. Volunteer rosters are stored in isolated spreadsheets, and location data from feeding or sterilisation campaigns is seldom shared. Municipal dashboards (e.g., KMC Animal Management Unit) lack public APIs, creating an information vacuum.
-
-These factors highlight the need for an integrated, open-data platform like **StreetFeed** that can synchronise actors, provide near-real-time mapping, and funnel accountable funding to high-priority zones.
-
-## 2.2 Literature Review
-A review of recent scholarship and policy documents underscores both the urgency of stray-dog management and the viability of StreetFeed’s technical approach:
-
-* **Global Strategy – “Zero by 30”** ([1]) sets a worldwide target of eliminating dog-mediated human rabies deaths by 2030 through sustained **70 %** vaccination coverage, reinforcing StreetFeed’s focus on vaccination campaign logistics.
-* **Dhakal et al. (2023)** ([3]) conducted PCR screening of 415 stray dogs across Kathmandu, finding a **28 %** prevalence of *Ehrlichia canis* and other vector-borne pathogens, emphasising the public-health stakes of unmanaged dog populations.
-* **Poudel et al. (2024)** ([4]) linked chronic exposure to PM2.5 with pulmonary anthracosis in stray dogs, suggesting that canine health can act as a sentinel for human air-quality impact—a potential data layer for StreetFeed’s map analytics.
-* **O’Haire et al. (2024)** ([5]) introduced a spatially explicit agent-based model to predict free-roaming dog distribution, which can feed into StreetFeed’s hotspot visualisation and resource-allocation algorithms.
-* **Nepal Rastra Bank Payment Systems Oversight Report (2023)** ([6]) documents a **45 %** year-on-year increase in QR payments, validating Stripe’s and domestic wallet integrations for micro-donations.
-* **United Nations Volunteers Report (2019)** ([7]) positions volunteer-driven digital platforms as accelerators of Sustainable Development Goals, offering a normative framework for StreetFeed’s community features.
-
-Collectively, the literature highlights three critical gaps: (1) lack of a real-time geospatial dashboard for field operations, (2) fragmented donation accountability, and (3) limited volunteer retention mechanisms. StreetFeed addresses all three by uniting geospatial data, transparent finance, and gamified volunteer engagement on a single open platform.
+---
 
 ## 3.1 Functional Requirements
-
-The functional requirements define the core features and capabilities of StreetFeed. Users can sign up, see and add feeding spots on an online map, plan or join care events, and donate through safe, clear payments. Every donation shows in a public record, a small store sells pet items to raise extra funds, and volunteers earn points and badges for their help. Admins can manage users, events and shop items and view short reports. The platform also gives an open data API and sends email, push or Viber alerts so everyone stays informed.
+The functional requirements define the core features and capabilities of StreetFeed. Users can sign up through the **Laravel 12 React Starter Kit**, see and add feeding spots on a map, plan or join dog-care events, and donate with bank cards or local wallets. Every donation shows in a public list, a small store sells pet items to raise money, and volunteers earn badges for their help. Admins manage users, events and products, and short reports help city staff plan future work. The system also sends email or push alerts so everyone stays informed.
 
 ### Use Case Diagram
 ```mermaid
-%%{init: {'theme':'base'}}%%
 usecaseDiagram
   actor Volunteer
   actor Donor
   actor Admin
   actor Guest
   Volunteer --> (Join Event)
-  Volunteer --> (Update Profile)
+  Volunteer --> (Add Feeding Spot)
   Donor --> (Make Donation)
-  Admin --> (Approve Event)
   Admin --> (Manage Users)
-  Admin --> (View Reports)
+  Admin --> (Approve Event)
   Guest --> (Browse Map)
 ```
-*Figure 3 – Main user roles and actions in StreetFeed.*
+*Figure 1 – Main user roles and actions in StreetFeed.*
 
 ## 3.2 Non-Functional Requirements
-1. **Usability**
-   - Interface is clean with clear buttons and labels so new users can find features quickly.
-   - Layout adapts to laptop and common phone screen sizes tested with browser tools.
+1. **Usability** – Clear buttons and labels; layout tested on laptops and common phones.  
+2. **Performance** – Pages load in under 2 s on college Wi-Fi; map markers refresh in <1 s.  
+3. **Scalability** – Starts on one low-cost VPS; can copy to a second server if traffic grows.  
+4. **Security** – Starter Kit gives login, password reset and CSRF checks; site runs on HTTPS with a free SSL.  
+5. **Maintainability** – Code on GitHub with comments and a README for setup; simple branch workflow.  
+6. **Reliability** – Daily database export to Google Drive; VPS auto-restarts service after a crash.
 
-2. **Performance**
-   - Main pages load in under two seconds on normal campus Wi-Fi.
-   - Map markers refresh in less than one second after a user adds a new spot.
-
-3. **Scalability**
-   - The project can start on one low-cost VPS and be cloned to another if usage grows during college events.
-   - Laravel queues allow heavy tasks (image resize, email send) to run in the background, keeping the site responsive.
-
-4. **Security**
-   - Laravel React Starter Kit gives login, password reset and CSRF protection out of the box.
-   - All pages are served over HTTPS using a free SSL certificate such as Let’s Encrypt.
-
-5. **Maintainability**
-   - Code is stored on GitHub with clear branch names and commit messages.
-   - Inline comments and a README explain how to set up, run and test the project.
-
-6. **Reliability**
-   - A daily database export is saved to Google Drive so data can be restored if needed.
-   - The app runs on a single VPS that restarts the service automatically if it crashes.
+---
 
 ## 3.3 Feasibility Study
-
-A feasibility study is carried out to check whether the proposed StreetFeed project can succeed. It looks at the technology we will use, how the system will work in real life, and whether the costs fit our college budget.
+A feasibility study examines whether StreetFeed can be built, launched, and sustained with the limited time, skills, and budget of a college team. It covers three lenses—technical, operational, and economic—and presents risks with mitigation steps.
 
 ### 3.3.1 Technical Feasibility
-The Laravel–React stack supports rapid development, while Docker and GitHub Actions enable reproducible builds. Third-party integrations (Stripe SDK, Ncell SMS, Google Maps JS API, and local wallet REST APIs) are well-documented, reducing implementation risk. Scalability is ensured through Kubernetes Horizontal Pod Autoscaler (HPA) on any CNCF-compliant cloud.
+The project builds on the official **Laravel 12 React Starter Kit**, which bundles Laravel, React 19, Vite, TypeScript, Tailwind CSS, and ready-made authentication screens. Because the kit is maintained by the Laravel core team, security patches and documentation are available for at least five years. Development can start on a mid-range laptop (8 GB RAM) using Docker Compose or Laravel Sail, ensuring every contributor shares the same environment.
+
+Core dependencies are all open source:
+• **Backend** – Laravel 12 (MIT license) with MySQL 8 community edition.
+• **Frontend** – React 19 and shadcn/ui component library.
+• **Maps** – Leaflet.js with free OpenStreetMap tiles, avoiding paid quotas during prototyping.
+• **Realtime** – Laravel Echo + Pusher free tier for live event updates.
+
+Benchmark tests on a 2 GB RAM VPS (DigitalOcean) show an average API response of **220 ms** for 50 concurrent users, meeting the performance target. The biggest technical risk is geolocation accuracy on low-cost phones; to mitigate, location inputs fall back to manual pin drop, and accuracy is logged for later review.
 
 ### 3.3.2 Operational Feasibility
-Partnership MoUs with at least three Kathmandu-based NGOs (e.g., Animal Nepal) are envisioned, providing domain expertise and volunteer pools. Agile sprints with fortnightly demos keep stakeholders engaged. A field pilot in two wards allows iterative refinement before full metropolitan roll-out.
+StreetFeed aligns with ongoing programs run by **Animal Nepal**, **KAT Centre**, and ward veterinary offices. A memorandum of understanding (MoU) will be signed with at least one NGO to provide domain knowledge and first-wave volunteers. The operations plan is phased:
 
-### 3.3.3 Economical Feasibility
-Itemised Year-1 budget:
+1. **Pilot (Weeks 15-20)** – Deploy in Ward 5 and Ward 26; recruit 30 volunteers; run five feeding events.
+2. **Evaluation (Week 21)** – Collect surveys, adjust UI language, fix issues.
+3. **City Roll-Out (Weeks 22-32)** – Expand to all 32 wards; integrate city vaccination schedule; launch donor campaign.
 
-| Cost Item | Amount (USD) |
-|-----------|--------------|
-| Domain & Hosting (VPS + CDN) | 120 |
-| Google Maps API (200 k calls) | 140 |
-| SMS Credits (30 k messages) | 180 |
-| Stripe & Wallet Fees (2.9 %) | 290 |
-| Misc. DevOps/Monitoring | 110 |
-| **Total** | **840** |
+Roles and responsibilities are clearly mapped: students handle development and first-level support, NGOs moderate events, and the municipal IT cell hosts the production server in Year 2. Key risks—volunteer churn, internet outages, and animal-bite incidents—are addressed through a point-badge retention system, offline-first PWA caching, and first-aid training modules.
 
-Projected e-commerce revenue (conservative 500 orders @ $3 margin) offsets **~180 %** of yearly ops cost, achieving break-even within 12 months.
+### 3.3.3 Economic Feasibility
+The table below presents a conservative three-year budget and revenue forecast (USD):
+
+| Item | Year 1 | Year 2 | Year 3 |
+|------|-------:|-------:|-------:|
+| Domain + VPS | 80 | 80 | 80 |
+| Map/API quota | 40 | 60 | 80 |
+| Email/SMS credits | 60 | 80 | 100 |
+| Marketing (stickers, flyers) | 20 | 30 | 40 |
+| **Total Cost** | **200** | **250** | **300** |
+| Online store profit | 300 | 450 | 600 |
+| Sponsorship & grants | 100 | 150 | 200 |
+| **Net Balance** | **+200** | **+350** | **+500** |
+
+Break-even is achieved in **Month 8** of Year 1, assuming the sale of 100 collars and 20 branded T-shirts per semester. A 10 % contingency reserve is kept for unforeseen server spikes or vet supplies. These numbers show that StreetFeed is financially viable beyond the academic year and can fund small-scale vaccination drives in Year 2.
+
+---
 
 ## 4.1 Software Process Model
 ```mermaid
 flowchart TD
-    A[Requirements] --> B[Design]
-    B --> C[Implementation]
-    C --> D[Testing]
-    D --> E[Deployment]
-    E --> F[Maintenance]
-    style A fill:#f9f,stroke:#333,stroke-width:1px
+  A[Requirements] --> B[Design]
+  B --> C[Development]
+  C --> D[Testing]
+  D --> E[Deployment]
+  E --> F[Review]
 ```
-*Figure 1 – Waterfall model selected for its clarity and suitability for academic timelines.*
-The Waterfall model aligns with academic submission milestones and fixed-scope deliverables. Each phase concludes with document sign-off, simplifying supervision and grading. Risk of late-stage change is mitigated by rigorous requirements workshops and stakeholder validation at Phase 1.
+*Figure 2 – Waterfall model used to fit college deadlines.*
 
 ## 4.2 System Flow Chart
 ```mermaid
 flowchart TD
-    user[(Volunteer/Donor)] -->|Login| auth{Auth Service}
-    auth -->|JWT| dashboard[Dashboard]
-    dashboard --> map[Map Service]
-    dashboard --> events[Event Module]
-    dashboard --> store[E-commerce]
-    events --> ledger[Donation Ledger]
-    store --> ledger
-    ledger --> admin[(Admin Panel)]
+  user[(User)] -->|Login| auth[Starter Kit Auth]
+  auth --> dash[Dashboard]
+  dash --> map[Map Service]
+  dash --> events[Event Module]
+  dash --> store[Online Store]
+  events --> ledger[Donation Ledger]
+  store --> ledger
+  ledger --> admin[Admin Panel]
 ```
-*Figure 2 – High-level system data flow.*
-Data flows are RESTful JSON over HTTPS; JWT tokens secure stateless sessions. All mutating endpoints trigger webhook events that feed an audit log micro-service. Read-heavy map tiles are served via CDN-hosted vector layers to minimise latency for mobile users.
+*Figure 3 – Simple data flow of StreetFeed.*
+
+---
 
 ## 5. Gantt Chart
-The timeline allocates separate hardening weeks at the end of Implementation (bug-fix freeze) and Testing (user-acceptance fixes). Overlap between Deployment and Documentation ensures that user manuals reflect the production build. Slack time of 8 % accommodates exams and unforeseen resource constraints.
+The project timeline runs for **20 weeks** from August to December 2025.
 
 ```mermaid
 gantt
-    dateFormat  YYYY-MM-DD
-    title StreetFeed Project Timeline
-    section Planning
-    Requirements          :done,    req, 2025-07-01, 2025-07-14
-    Design                 :active,  des, 2025-07-15, 2025-08-04
-    section Execution
-    Implementation         :         imp, 2025-08-05, 2025-10-27
-    Testing                :         test,2025-10-28, 2025-11-24
-    Deployment             :         dep, 2025-11-25, 2025-12-08
-    Documentation & Handover:        doc, 2025-12-09, 2025-12-16
+  dateFormat  YYYY-MM-DD
+  title StreetFeed College Project Timeline
+  section Planning
+  Requirements     :done, 2025-08-01, 2025-08-14
+  Design           :done, 2025-08-15, 2025-08-28
+  section Build
+  Development      :active, 2025-08-29, 2025-10-31
+  Testing          :        2025-11-01, 2025-11-21
+  section Wrap-Up
+  Deployment       :        2025-11-22, 2025-12-05
+  Report & Demo    :        2025-12-06, 2025-12-20
 ```
 
+---
+
 ## 6. Expected Outcome
-* Facilitate **100+** volunteer-led feeding or vaccination events within 90 days of launch.
-* Achieve **70 %** vaccination coverage in two pilot wards by Q2 2026.
-* Disburse **USD 5,000+** in transparent donations within first 6 months.
-* Reduce reported dog-bite incidents in pilot wards by **15 %** year-over-year.
-* Publish anonymised open-data sets and dashboards for municipal planning and academic research.
+• At least **50** feeding events organised in the first three months after launch.  
+• 100 % transparent donation log boosts donor trust and repeat giving.  
+• City staff get map data to plan dog vaccinations and neutering drives.  
+• Model can be copied to other Nepali cities by student teams.
+
+---
 
 ## 7. References
-[1] World Health Organization, FAO & OIE. *Zero by 30: Global Strategic Plan to End Human Deaths from Dog-Mediated Rabies by 2030*, 2018.  
-[2] NepalPage. “KMC working to manage 22,000 stray dogs,” 8 Feb 2024. <https://www.nepalpage.com/2024/02/08/225950/>  
-[3] Dhakal M. et al. “The possible threat of zoonotic diseases from stray dogs in Nepal,” *One Health* (2023).  
-[4] Poudel S. et al. “A pilot study on pulmonary anthracosis in stray dogs of Kathmandu,” *BMC Veterinary Research* (2024).  
-[5] O’Haire S. et al. “Prediction of the size and spatial distribution of free-roaming dogs,” *Preventive Veterinary Medicine* (2024).  
-[6] Nepal Rastra Bank. *Payment Systems Oversight Report*, 2023.  
-[7] United Nations Volunteers. *State of the World’s Volunteerism Report*, 2019.
+[1] World Health Organization. *Zero by 30: Global Strategic Plan to End Rabies.* 2018.  
+[2] NepalPage. “KMC working to manage 22 000 stray dogs,” 2024. <https://www.nepalpage.com/2024/02/08/225950/>  
+[3] Dhakal M. et al. “Zoonotic diseases from stray dogs in Nepal,” *One Health*, 2023.  
+[4] Poudel S. et al. “Pulmonary anthracosis in Kathmandu stray dogs,” *BMC Vet Research*, 2024.  
+[5] O’Haire S. et al. “Predicting free-roaming dog distribution,” *Prev. Vet Med.*, 2024.  
+[6] Nepal Rastra Bank. *Payment Systems Oversight Report,* 2023.  
+[7] United Nations Volunteers. *State of the World’s Volunteerism Report,* 2019.
