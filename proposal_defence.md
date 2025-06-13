@@ -1,166 +1,179 @@
-# Proposal Defence Report – StreetFeed: A College Project for Street Animals in Nepal
+# StreetFeed – Project Proposal Defence Report
+
+**Course:** Project III – Bachelor of Computer Applications (BCA)  
+**College:** Tribhuvan University Affiliated, Nepal  
+**Student:** [Your Name]  
+**Date:** 13 June 2025  
 
 ---
 
-## 1.1 Introduction
-Stray dogs are common on the streets of Kathmandu and other Nepali cities. Many of them suffer from hunger, disease and road accidents. **StreetFeed** is a web system that helps volunteers, donors and city staff work together to feed, treat and watch over these animals. The system shows feeding spots on a map, keeps donation records open to the public and sells pet items to raise extra funds.
+## 1.0 Introduction & Project Context
 
-## 1.2 Problem Statement
-Kathmandu Metropolitan City counted about **22 000** stray dogs in 2024 [2]. Current help efforts rely on social media posts and paper notes, so work is doubled or missed. Donors do not always know where their money goes, and the city has little data for planning vaccinations or neutering drives.
+### 1.1 Introduction
+StreetFeed is a web–based volunteer-management and donation platform dedicated to the welfare of street dogs (and other stray animals) across Nepal. The system enables citizens, animal-welfare organisations, and donors to collaboratively organise feeding drives, medical camps, and awareness campaigns with full transparency. Leveraging a modern **Laravel 12 REST API** backend and **React (Laravel Starter Kit)** frontend, StreetFeed provides location-aware event listings, secure online donations via **Stripe**, and an integrated e-commerce micro-store to create a self-sustaining ecosystem for continuous animal-care operations.
 
-## 1.3 Objectives
-1. Give one website where volunteers can plan, join and view feeding events.
-2. Keep a live, public ledger of all donations for full trust.
-3. Show feeding spots and dog-care events on an interactive map.
-4. Run a small online store to support the project’s costs.
-5. Offer simple reports and open data for city offices and students.
+### 1.2 Problem Statement
+Kathmandu Valley alone is estimated to host over **100 000 free-roaming dogs** with limited access to regular food and medical assistance [3]. Existing animal-welfare NGOs face chronic shortages of volunteers, fragmented information sharing, and unstructured donation tracking. There is **no unified digital platform** that simultaneously (i) mobilises volunteers, (ii) visualises feeding locations in real-time, and (iii) assures donors of transparent fund utilisation. Consequently, community engagement remains scattered, leading to duplicated efforts and inefficiencies.
 
----
-
-## 2.1 Background Study  
-A 2022 survey by Humane Society International found **22 000** free-roaming dogs in Kathmandu’s 32 wards. Stray dogs are the main source of rabies in Nepal; the Health Ministry still records **35–40** human deaths a year [1]. Feeding teams and NGOs do good work but use different tools, so their data is scattered. At the same time, digital use is high: Nepal’s mobile broadband user base passed **38 million** in 2023, and QR payments grew by **45 %** year on year [6]. This means an online tool can reach many volunteers and donors at low cost.
-
-## 2.2 Literature Review  
-• **Zero by 30** (WHO, 2018) sets a goal to end dog-mediated rabies deaths by 2030 [1].  
-• **Dhakal et al.** (2023) found a high level of zoonotic pathogens in Kathmandu’s stray dogs [3].  
-• **Poudel et al.** (2024) linked city air pollution to lung problems in stray dogs [4].  
-• **O’Haire et al.** (2024) showed how map models can predict dog hotspots, helping target care [5].  
-• **Nepal Rastra Bank** (2023) reported a sharp rise in QR donations, proving that digital giving works [6].  
-• **UN Volunteers** (2019) highlighted how online platforms boost community projects [7].  
-These studies back the idea that one mapped, transparent web system can improve dog care and public health.
+### 1.3 Objectives
+1. Develop a scalable web platform that lists volunteer events and feeding spots on an interactive map.
+2. Provide secure authentication & role-based authorisation using Laravel Breeze + Sanctum/JWT.
+3. Enable real-time donation processing through Stripe and publish public ledgers for transparency.
+4. Offer an online store for pet supplies, reinvesting profits into animal-care activities.
+5. Generate analytical dashboards for administrators to monitor volunteer activity, donations, and impact metrics.
+6. Foster community awareness via a moderated blog section and email notification system.
 
 ---
 
-## 3.1 Functional Requirements
-The functional requirements define the core features and capabilities of StreetFeed. Users can sign up through the **Laravel 12 React Starter Kit**, see and add feeding spots on a map, plan or join dog-care events, and donate with bank cards or local wallets. Every donation shows in a public list, a small store sells pet items to raise money, and volunteers earn badges for their help. Admins manage users, events and products, and short reports help city staff plan future work. The system also sends email or push alerts so everyone stays informed.
+## 2.0 Research Foundation
 
-### Use Case Diagram
-```mermaid
-usecaseDiagram
-  actor Volunteer
-  actor Donor
-  actor Admin
-  actor Guest
-  Volunteer --> (Join Event)
-  Volunteer --> (Add Feeding Spot)
-  Donor --> (Make Donation)
-  Admin --> (Manage Users)
-  Admin --> (Approve Event)
-  Guest --> (Browse Map)
-```
-*Figure 1 – Main user roles and actions in StreetFeed.*
+### 2.1 Background Study
+Stray-animal overpopulation is a recognised urban issue in Nepal. A 2024 spatio-statistical study projected **free-roaming dog densities of up to 170 dogs/km² in central Kathmandu** [3]. NGOs such as Sneha’s Care, HART, and PAWS frequently conduct feeding and sterilisation drives but rely on manual spreadsheets or social-media posts for coordination. Parallel studies on volunteer-management software reveal that purpose-built digital platforms can increase volunteer retention by **27–34 %** [4]. Technologically, Nepal’s urban areas enjoy 4G coverage with mobile-internet penetration exceeding **82 %** in 2024 [5], indicating readiness for a progressive-web-app approach.
 
-## 3.2 Non-Functional Requirements
-1. **Usability** – Clear buttons and labels; layout tested on laptops and common phones.  
-2. **Performance** – Pages load in under 2 s on college Wi-Fi; map markers refresh in <1 s.  
-3. **Scalability** – Starts on one low-cost VPS; can copy to a second server if traffic grows.  
-4. **Security** – Starter Kit gives login, password reset and CSRF checks; site runs on HTTPS with a free SSL.  
-5. **Maintainability** – Code on GitHub with comments and a README for setup; simple branch workflow.  
-6. **Reliability** – Daily database export to Google Drive; VPS auto-restarts service after a crash.
+From a technical standpoint, Laravel’s upcoming **v12** (scheduled February 2025) introduces **built-in rate-limiting middleware upgrades and per-route encryption** for API security [1][2]. React 19’s concurrent rendering and **Suspense improvements** further enhance perceived performance, enabling fluid map visualisations with Leaflet.js. Payment integration through Stripe ensures PCI-DSS compliance, while **Google Maps Platform** continues to offer free-tier credits sufficient for academic prototypes [5].
+
+### 2.2 Literature Review
+| Study / Source | Key Findings | Relevance |
+|---|---|---|
+| Devleesschauwer et al. (2024) – *Prediction of Free-Roaming Dog Population* [3] | Utilised Poisson point-process modelling to estimate dog densities; recommended community-driven feeding networks. | Supports evidence of problem scale; informs geography-based features. |
+| VolunteerHub (2024) – *Volunteer Management for Animal Rights Groups* [4] | Cloud solution increased volunteer sign-ups by 31 % for shelters; highlights importance of intuitive scheduling UI. | Guides functional requirements for event enrolment & reminders. |
+| ICAM Coalition (2023) – *Assessing Dog Population in Kathmandu* [6] | Household surveys showed >50 % owned dogs wander freely. | Justifies need for city-wide monitoring & education modules. |
+| Stripe Docs (2024) – *Accepting Donations in PHP* [6] | Recommends server-side intent creation and webhook-based reconciliation. | Informs secure payment workflow and audit trail. |
+| Google Maps JS API Docs (2024) [5] | Offers real-time marker clustering and heat-map layers. | Enables visualisation of service areas. |
+| Cloudways Blog (2024) – *What’s New in Laravel 12* [2] | Highlights zero-downtime migration tooling and typed route bindings. | Supports technical feasibility and maintainability claims. |
+| **Laravel 12 Release Notes** (Laravel Docs, 2025) [1] | Confirms long-term support (LTS) until 2030, bundled OAuth2 server. | Strengthens argument for framework longevity. |
+
+(Additional academic articles and NGO reports were reviewed; see References section.)
 
 ---
 
-## 3.3 Feasibility Study
-A feasibility study examines whether StreetFeed can be built, launched, and sustained with the limited time, skills, and budget of a college team. It covers three lenses—technical, operational, and economic—and presents risks with mitigation steps.
+## 3.0 System Requirements
 
-### 3.3.1 Technical Feasibility
-The project builds on the official **Laravel 12 React Starter Kit**, which bundles Laravel, React 19, Vite, TypeScript, Tailwind CSS, and ready-made authentication screens. Because the kit is maintained by the Laravel core team, security patches and documentation are available for at least five years. Development can start on a mid-range laptop (8 GB RAM) using Docker Compose or Laravel Sail, ensuring every contributor shares the same environment.
+### 3.1 Functional Requirements
+1. **User Registration & Authentication** – Email, social-login (Google), JWT session management.
+2. **Volunteer Event Management** – CRUD operations for feeding/medical events, moderator approval workflow.
+3. **Geo-Mapping Module** – Display live markers for service locations; filter by date & category.
+4. **Donation Processing** – Stripe payment intent, receipt generation, public donation ledger.
+5. **E-commerce Store** – Product catalogue, cart, checkout, order-tracking dashboard.
+6. **Notification Service** – Email/SMS reminders for upcoming events and donation confirmations.
+7. **Admin Analytics Dashboard** – KPIs on volunteers, donations, inventory, and heat-map overlays.
+8. **Content Management** – Blog posts, educational resources with markdown editor & moderation.
+9. **Role-Based Access Control** – Admin, Moderator, Volunteer, Guest permissions matrix.
+10. **API Documentation** – Auto-generated OpenAPI/Swagger docs for future mobile-app consumption.
 
-Core dependencies are all open source:
-• **Backend** – Laravel 12 (MIT license) with MySQL 8 community edition.
-• **Frontend** – React 19 and shadcn/ui component library.
-• **Maps** – Leaflet.js with free OpenStreetMap tiles, avoiding paid quotas during prototyping.
-• **Realtime** – Laravel Echo + Pusher free tier for live event updates.
+### 3.2 Non-Functional Requirements
+1. **Performance**
+   - ⚡ Average page load < 2 s on 4G.
+   - Backend API p95 response < 300 ms.
+   - Map clustering to avoid >1 000 DOM nodes.
+2. **Security**
+   - 🔒 HTTPS/TLS 1.3 enforced.
+   - OWASP Top-10 compliant coding; CSRF & XSS defences.
+   - Role-based auth with token expiry & refresh.
+3. **Usability**
+   - 🖥️ Responsive design (mobile-first).
+   - WCAG 2.1 AA colour-contrast & keyboard navigation.
+4. **Reliability & Availability**
+   - ⏱️ 99.5 % uptime target during pilot.
+   - Automated nightly backups of DB & media.
+5. **Maintainability & Scalability**
+   - 🧩 Modular MVC codebase with SOLID principles.
+   - Docker-based deployment; horizontal scaling via load balancer.
+6. **Compliance & Accessibility**
+   - 📜 GDPR-like privacy policy; Nepal IT Act alignment.
+   - Alt-text for images; semantic HTML for screen readers.
+7. **Localization**
+   - 🌐 i18n support for English & Nepali strings via `react-i18next`.
 
-Benchmark tests on a 2 GB RAM VPS (DigitalOcean) show an average API response of **220 ms** for 50 concurrent users, meeting the performance target. The biggest technical risk is geolocation accuracy on low-cost phones; to mitigate, location inputs fall back to manual pin drop, and accuracy is logged for later review.
+### 3.3 Feasibility Study
+#### 3.3.1 Technical Feasibility
+Laravel 12’s LTS and React 19’s mature ecosystem reduce technology risk. All core packages (Stripe SDK, Leaflet.js) are open-source with active maintenance. The starter kit bundles Vite for fast builds and Breeze for plug-and-play auth, lowering development time.
 
-### 3.3.2 Operational Feasibility
-StreetFeed aligns with ongoing programs run by **Animal Nepal**, **KAT Centre**, and ward veterinary offices. A memorandum of understanding (MoU) will be signed with at least one NGO to provide domain knowledge and first-wave volunteers. The operations plan is phased:
+#### 3.3.2 Operational Feasibility
+Student developers have prior coursework in PHP and JavaScript; volunteers/admins require minimal training thanks to intuitive UI. Deployment on free-tier cloud (Render, Vercel, or Heroku free dyno) supports pilot-scale traffic (<1 000 DAU).
 
-1. **Pilot (Weeks 15-20)** – Deploy in Ward 5 and Ward 26; recruit 30 volunteers; run five feeding events.
-2. **Evaluation (Week 21)** – Collect surveys, adjust UI language, fix issues.
-3. **City Roll-Out (Weeks 22-32)** – Expand to all 32 wards; integrate city vaccination schedule; launch donor campaign.
-
-Roles and responsibilities are clearly mapped: students handle development and first-level support, NGOs moderate events, and the municipal IT cell hosts the production server in Year 2. Key risks—volunteer churn, internet outages, and animal-bite incidents—are addressed through a point-badge retention system, offline-first PWA caching, and first-aid training modules.
-
-### 3.3.3 Economic Feasibility
-The table below presents a conservative three-year budget and revenue forecast (USD):
-
-| Item | Year 1 | Year 2 | Year 3 |
-|------|-------:|-------:|-------:|
-| Domain + VPS | 80 | 80 | 80 |
-| Map/API quota | 40 | 60 | 80 |
-| Email/SMS credits | 60 | 80 | 100 |
-| Marketing (stickers, flyers) | 20 | 30 | 40 |
-| **Total Cost** | **200** | **250** | **300** |
-| Online store profit | 300 | 450 | 600 |
-| Sponsorship & grants | 100 | 150 | 200 |
-| **Net Balance** | **+200** | **+350** | **+500** |
-
-Break-even is achieved in **Month 8** of Year 1, assuming the sale of 100 collars and 20 branded T-shirts per semester. A 10 % contingency reserve is kept for unforeseen server spikes or vet supplies. These numbers show that StreetFeed is financially viable beyond the academic year and can fund small-scale vaccination drives in Year 2.
+#### 3.3.3 Economical Feasibility
+Projected costs: domain ≈ USD 12/yr, hosting ≈ USD 7/mo (Render Starter), Stripe fee 2.9 % + NPR 30 per transaction. Total first-year expense < USD 120, within academic budget. Open-source stack eliminates licence fees.
 
 ---
 
-## 4.1 Software Process Model
-```mermaid
-flowchart TD
-  A[Requirements] --> B[Design]
-  B --> C[Development]
-  C --> D[Testing]
-  D --> E[Deployment]
-  E --> F[Review]
-```
-*Figure 2 – Waterfall model used to fit college deadlines.*
+## 4.0 Design Models
 
-## 4.2 System Flow Chart
+### 4.1 Software Process Model
+The project follows an **Incremental Iterative Model** to allow early delivery of core volunteering features while progressively adding the store and analytics.
+
 ```mermaid
 flowchart TD
-  user[(User)] -->|Login| auth[Starter Kit Auth]
-  auth --> dash[Dashboard]
-  dash --> map[Map Service]
-  dash --> events[Event Module]
-  dash --> store[Online Store]
-  events --> ledger[Donation Ledger]
-  store --> ledger
-  ledger --> admin[Admin Panel]
+    A[Requirements] --> B[Iteration 1\nVolunteer Core]
+    B --> C[Iteration 2\nDonations]
+    C --> D[Iteration 3\nE-commerce]
+    D --> E[Iteration 4\nAnalytics & Polish]
+    E --> F[Deployment & Evaluation]
 ```
-*Figure 3 – Simple data flow of StreetFeed.*
+
+### 4.2 System Flow Chart
+```mermaid
+flowchart LR
+    subgraph Client
+        U[User Browser (React)]
+    end
+    U -->|HTTPS| API((Laravel 12 REST API))
+    API --> DB[(MySQL DB)]
+    API --> STRIPE>Stripe API]
+    API --> MAPS>Google Maps JS API]
+    API --> EMAIL>SMTP / SendGrid]
+    DB --> ADMIN[Admin Dashboard]
+```
 
 ---
 
-## 5. Gantt Chart
-The project timeline runs for **20 weeks** from August to December 2025.
+## 5.0 Project Schedule (Gantt)
+The project spans **16 weeks**, beginning with requirement elicitation and concluding with deployment & defence rehearsal. Key overlapping iterations ensure continuous feedback and risk mitigation.
 
 ```mermaid
 gantt
-  dateFormat  YYYY-MM-DD
-  title StreetFeed College Project Timeline
-  section Planning
-  Requirements     :done, 2025-08-01, 2025-08-14
-  Design           :done, 2025-08-15, 2025-08-28
-  section Build
-  Development      :active, 2025-08-29, 2025-10-31
-  Testing          :        2025-11-01, 2025-11-21
-  section Wrap-Up
-  Deployment       :        2025-11-22, 2025-12-05
-  Report & Demo    :        2025-12-06, 2025-12-20
+    dateFormat  YYYY-MM-DD
+    title StreetFeed Project Timeline (2025)
+    section Planning
+    Requirement Analysis    :active, a1, 2025-06-16, 1w
+    section Iteration 1 – Volunteer Core
+    Design & Setup          :a2, after a1, 1w
+    Backend Dev             :a3, after a2, 2w
+    Frontend Dev            :a4, after a2, 2w
+    Testing & Review        :a5, after a4, 1w
+    section Iteration 2 – Donations
+    Payment Integration     :b1, after a5, 2w
+    Ledger & Transparency   :b2, after b1, 1w
+    section Iteration 3 – Store
+    E-commerce Module       :c1, after b2, 2w
+    section Iteration 4 – Analytics
+    Dashboard & Reports     :d1, after c1, 1w
+    section Finalisation
+    Documentation           :e1, after d1, 1w
+    Deployment & Rehearsal  :e2, after e1, 1w
 ```
 
 ---
 
-## 6. Expected Outcome
-• At least **50** feeding events organised in the first three months after launch.  
-• 100 % transparent donation log boosts donor trust and repeat giving.  
-• City staff get map data to plan dog vaccinations and neutering drives.  
-• Model can be copied to other Nepali cities by student teams.
+## 6.0 Expected Outcome
+By project completion, StreetFeed will deliver a publicly accessible prototype showcasing:
+* Real-time volunteer event listings with map overlays.
+* Transparent donation flow with publicly visible ledgers.
+* Operational micro-store generating supplementary funds.
+* Analytics panel proving community impact through quantitative metrics.
+* Foundation for future mobile-app extension via documented REST endpoints.
 
 ---
 
-## 7. References
-[1] World Health Organization. *Zero by 30: Global Strategic Plan to End Rabies.* 2018.  
-[2] NepalPage. “KMC working to manage 22 000 stray dogs,” 2024. <https://www.nepalpage.com/2024/02/08/225950/>  
-[3] Dhakal M. et al. “Zoonotic diseases from stray dogs in Nepal,” *One Health*, 2023.  
-[4] Poudel S. et al. “Pulmonary anthracosis in Kathmandu stray dogs,” *BMC Vet Research*, 2024.  
-[5] O’Haire S. et al. “Predicting free-roaming dog distribution,” *Prev. Vet Med.*, 2024.  
-[6] Nepal Rastra Bank. *Payment Systems Oversight Report,* 2023.  
-[7] United Nations Volunteers. *State of the World’s Volunteerism Report,* 2019.
+## 7.0 References
+[1] Laravel Documentation. “Release Notes – Laravel 12 x.” *laravel.com/docs/12.x/releases*, accessed 13 June 2025.  
+[2] Cloudways. “What’s New in Laravel 12: A Comprehensive Overview.” *cloudways.com/blog/laravel-12/*, 2024.  
+[3] Devleesschauwer, B. et al. “Prediction of the Size and Spatial Distribution of Free-Roaming Dogs in Urban Nepal.” *Spatial Statistics*, vol. 49, 2024.  
+[4] VolunteerHub. “Volunteer Management Software for Animal Rights Groups.” *volunteerhub.com*, 2024.  
+[5] Google Developers. “Maps JavaScript API Overview.” *developers.google.com/maps/documentation/javascript/overview*, accessed 2025.  
+[6] ICAM Coalition. “Assessing the Dog Population in Kathmandu, Nepal.” *icam-coalition.org*, 2023.  
+[7] Stripe. “Accepting Donations in PHP – Integration Guide.” *stripe.com/docs/payments/accept-a-payment*, 2024.
+
+---
+
+> *“Help the streets, feed a friend.”* 🐾
