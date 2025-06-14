@@ -132,19 +132,21 @@ flowchart TD
 ## 5  Project Timeline
 The project runs from **28 May to 5 August**, totalling ten weeks. During the first week, the team finalises requirements and ships a clickable Figma mock-up to gather peer feedback. Weeks 2–4 focus on implementing the authentication scaffold, database schema, and event management screens. Weeks 5–6 extend functionality with donation handling, mapping, and volunteer dashboards, followed by a full fortnight dedicated to polishing the e-commerce flow, adding email notifications, and writing user documentation. The last ten days are reserved for thorough testing, content population, and rehearsal of the proposal defence presentation.
 
+```mermaid
 gantt
-dateFormat  YYYY-MM-DD
+dateFormat YYYY-MM-DD
 title StreetFeed Development Schedule
 section Planning
-Requirements\nGathering      :a1, 2025-05-28, 7d
+Req. Gathering :a1, 2025-05-28, 7d
 section Core Build
-Auth & Database             :a2, 2025-06-04, 14d
-Events & Mapping            :a3, 2025-06-18, 14d
+Auth & Database :a2, 2025-06-04, 14d
+Events & Mapping :a3, 2025-06-18, 14d
 section Extended Features
-Donations & Store           :a4, 2025-07-02, 14d
+Donations & Store :a4, 2025-07-02, 14d
 section Finalisation
-Testing & Docs              :a5, 2025-07-16, 10d
-Presentation Prep           :a6, 2025-07-26, 10d
+Testing & Docs :a5, 2025-07-16, 10d
+Presentation Prep :a6, 2025-07-26, 10d
+```
 
 *Figure 3 – Gantt chart aligning tasks with academic deadlines.*
 
