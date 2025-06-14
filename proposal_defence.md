@@ -137,7 +137,7 @@ gantt
 dateFormat  YYYY-MM-DD
 title StreetFeed Development Schedule
 section Planning
-Requirements & Mock-up      :a1, 2025-05-28, 7d
+Requirements Gathering      :a1, 2025-05-28, 7d
 section Core Build
 Auth & Database             :a2, 2025-06-04, 14d
 Events & Mapping            :a3, 2025-06-18, 14d
